@@ -15,9 +15,9 @@ _main:
 	CLRF       TRISB+0
 ;QAcessBIOPIN.c,18 :: 		PORTB=0b00000000;
 	CLRF       PORTB+0
-;QAcessBIOPIN.c,19 :: 		RC2=1; // Aciona o Transistor do Menu
+;QAcessBIOPIN.c,19 :: 		RC2=1; 
 	BSF        PORTB+0, 5
-;QAcessBIOPIN.c,20 :: 		delay_ms(1305); // Aguarda 500 milissegundos
+;QAcessBIOPIN.c,20 :: 		delay_ms(1305);
 	MOVLW      7
 	MOVWF      R11+0
 	MOVLW      159
@@ -33,7 +33,7 @@ L_main0:
 	GOTO       L_main0
 	NOP
 	NOP
-;QAcessBIOPIN.c,21 :: 		RC2=0; // desliga o Transistor do Menu
+;QAcessBIOPIN.c,21 :: 		RC2=0; 
 	BCF        PORTB+0, 5
 ;QAcessBIOPIN.c,23 :: 		aberta:
 ___main_aberta:
@@ -57,12 +57,12 @@ L_main1:
 	GOTO       L_main2
 ;QAcessBIOPIN.c,28 :: 		volta:
 ___main_volta:
-;QAcessBIOPIN.c,29 :: 		if (CM4==0)         // Se o botao de abertura de porta for pressionado
+;QAcessBIOPIN.c,29 :: 		if (CM4==0)        
 	BTFSC      PORTA+0, 4
 	GOTO       L_main3
-;QAcessBIOPIN.c,31 :: 		RFC=1;            // Ativa o rele de abertura de porta
+;QAcessBIOPIN.c,31 :: 		RFC=1;            
 	BSF        PORTB+0, 4
-;QAcessBIOPIN.c,32 :: 		Delay_ms(2000);   // Aguarda 2 segundos
+;QAcessBIOPIN.c,32 :: 		Delay_ms(2000);  
 	MOVLW      11
 	MOVWF      R11+0
 	MOVLW      38
@@ -78,20 +78,20 @@ L_main4:
 	GOTO       L_main4
 	NOP
 	NOP
-;QAcessBIOPIN.c,33 :: 		RFC=0;            // Desativa o rele de abertura de porta
+;QAcessBIOPIN.c,33 :: 		RFC=0;           
 	BCF        PORTB+0, 4
 ;QAcessBIOPIN.c,34 :: 		goto aberta;
 	GOTO       ___main_aberta
 ;QAcessBIOPIN.c,35 :: 		}
 L_main3:
-;QAcessBIOPIN.c,36 :: 		if (CM2==0)         // Se o sensor de vandalismo for acionado
+;QAcessBIOPIN.c,36 :: 		if (CM2==0)        
 	BTFSC      PORTA+0, 2
 	GOTO       L_main5
-;QAcessBIOPIN.c,38 :: 		RC1=1;            // Aciona o rele de alarme
+;QAcessBIOPIN.c,38 :: 		RC1=1;           
 	BSF        PORTB+0, 7
 ;QAcessBIOPIN.c,39 :: 		}
 L_main5:
-;QAcessBIOPIN.c,40 :: 		if (CM3==1 && p==0) // Se o sensor de porta aberta estiver ativado e
+;QAcessBIOPIN.c,40 :: 		if (CM3==1 && p==0) 
 	BTFSS      PORTA+0, 3
 	GOTO       L_main8
 	MOVLW      0
@@ -104,14 +104,14 @@ L__main26:
 	BTFSS      STATUS+0, 2
 	GOTO       L_main8
 L__main24:
-;QAcessBIOPIN.c,42 :: 		RC1=1;            //
+;QAcessBIOPIN.c,42 :: 		RC1=1;            
 	BSF        PORTB+0, 7
 ;QAcessBIOPIN.c,43 :: 		}
 L_main8:
-;QAcessBIOPIN.c,44 :: 		if (CFC==0)         // Se o comando de abertura de porta for iniciado
+;QAcessBIOPIN.c,44 :: 		if (CFC==0)        
 	BTFSC      PORTA+0, 1
 	GOTO       L_main9
-;QAcessBIOPIN.c,46 :: 		delay_ms(300);    // Aguarda 300 milissegundos
+;QAcessBIOPIN.c,46 :: 		delay_ms(300);    
 	MOVLW      2
 	MOVWF      R11+0
 	MOVLW      134
@@ -125,10 +125,10 @@ L_main10:
 	GOTO       L_main10
 	DECFSZ     R11+0, 1
 	GOTO       L_main10
-;QAcessBIOPIN.c,47 :: 		if (CFC==0)       // Se o comando de abertura de porta continuar acionado
+;QAcessBIOPIN.c,47 :: 		if (CFC==0)      
 	BTFSC      PORTA+0, 1
 	GOTO       L_main11
-;QAcessBIOPIN.c,49 :: 		delay_ms(100);  // Aguarda 100 milissegundos
+;QAcessBIOPIN.c,49 :: 		delay_ms(100);  
 	MOVLW      130
 	MOVWF      R12+0
 	MOVLW      221
@@ -140,10 +140,10 @@ L_main12:
 	GOTO       L_main12
 	NOP
 	NOP
-;QAcessBIOPIN.c,50 :: 		if (CFC==0)     // Se o comando de abertura de porta continuar acionado
+;QAcessBIOPIN.c,50 :: 		if (CFC==0)     
 	BTFSC      PORTA+0, 1
 	GOTO       L_main13
-;QAcessBIOPIN.c,52 :: 		delay_ms(118); // Aguarda 118 milissegundos
+;QAcessBIOPIN.c,52 :: 		delay_ms(118); 
 	MOVLW      154
 	MOVWF      R12+0
 	MOVLW      61
@@ -155,10 +155,10 @@ L_main14:
 	GOTO       L_main14
 	NOP
 	NOP
-;QAcessBIOPIN.c,53 :: 		if (CFC==0)    // Se o comando de abertura de porta continuar acionado
+;QAcessBIOPIN.c,53 :: 		if (CFC==0)   
 	BTFSC      PORTA+0, 1
 	GOTO       L_main15
-;QAcessBIOPIN.c,55 :: 		delay_ms(25); // Aguarda 25 milissegundos
+;QAcessBIOPIN.c,55 :: 		delay_ms(25); 
 	MOVLW      33
 	MOVWF      R12+0
 	MOVLW      118
